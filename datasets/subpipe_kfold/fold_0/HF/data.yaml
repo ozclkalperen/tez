@@ -1,0 +1,7 @@
+path: /home/alp/thesis/datasets/subpipe_kfold/fold_0/HF
+train: images/train
+val: images/val
+test: images/test
+nc: 1
+names:
+- pipe
