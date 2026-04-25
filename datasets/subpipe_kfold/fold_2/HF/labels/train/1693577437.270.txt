@@ -1,0 +1,1 @@
+/home/alp/thesis/datasets/SubPipe/Chunk4/SSS_HF_images/YOLO_Annotation/1693577437.270.txt
