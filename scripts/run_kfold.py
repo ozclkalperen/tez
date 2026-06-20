@@ -28,8 +28,10 @@ from pathlib import Path
 
 from ultralytics import YOLO
 
+from paths import KFOLD_DIR, REPO_ROOT, RESULTS_DIR, RUNS_DIR as RUNS_ROOT
+
 # ── Config ─────────────────────────────────────────────────────────────────
-MODEL    = "yolo26n.pt"
+MODEL    = str(REPO_ROOT / "yolo26n.pt") if (REPO_ROOT / "yolo26n.pt").exists() else "yolo26n.pt"
 EPOCHS   = 50
 IMGSZ    = 640
 BATCH    = 16
@@ -37,9 +39,8 @@ WORKERS  = 8
 PATIENCE = 100       # EPOCHS'tan büyük → early stopping devre dışı
 DEVICE   = 0
 
-KFOLD_DIR   = Path("/home/alp/thesis/datasets/subpipe_kfold")
-RUNS_DIR    = Path("/home/alp/thesis/runs/kfold")
-RESULTS_CSV = Path("/home/alp/thesis/results/kfold_results.csv")
+RUNS_DIR    = RUNS_ROOT / "kfold"
+RESULTS_CSV = RESULTS_DIR / "kfold_results.csv"
 
 CHUNKS     = [f"Chunk{i}" for i in range(5)]
 MODALITIES = ["LF", "HF"]
@@ -181,7 +182,7 @@ def train_and_eval(fold_idx: int, modality: str, job_no: int, total: int) -> dic
         "test_map50_95":  tm["map50_95"],
         "best_epoch":     get_best_epoch(run_dir),
         "train_time_min": round(train_time, 1),
-        "run_dir":        str(run_dir),
+        "run_dir":        str(run_dir.relative_to(REPO_ROOT)),
     }
     write_csv_row(row)
     return row

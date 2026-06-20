@@ -17,9 +17,12 @@ Havuzdan random %10 val (best epoch seçimi), %90 train.
         data.yaml
 """
 
+import os
 import random
 from pathlib import Path
 import yaml
+
+from paths import KFOLD_DIR, REPO_ROOT, get_subpipe_root
 
 # ── Config ─────────────────────────────────────────────────────────────────
 SEED         = 42
@@ -27,8 +30,8 @@ VAL_FRACTION = 0.10
 N_FOLDS      = 5
 MODALITIES   = ["LF", "HF"]
 
-BASE_DIR = Path("/home/alp/thesis/datasets/SubPipe")
-OUT_DIR  = Path("/home/alp/thesis/datasets/subpipe_kfold")
+BASE_DIR = get_subpipe_root()
+OUT_DIR  = KFOLD_DIR
 CHUNKS   = [f"Chunk{i}" for i in range(N_FOLDS)]
 
 MODALITY_DIR = {"LF": "SSS_LF_images", "HF": "SSS_HF_images"}
@@ -51,12 +54,13 @@ def make_symlink(src: Path, dst: Path) -> None:
     dst.parent.mkdir(parents=True, exist_ok=True)
     if dst.exists() or dst.is_symlink():
         dst.unlink()
-    dst.symlink_to(src)
+    rel_src = os.path.relpath(src, start=dst.parent)
+    dst.symlink_to(rel_src)
 
 
 def write_yaml(fold_dir: Path, modality: str) -> Path:
     cfg = {
-        "path":  str(fold_dir / modality),
+        "path":  str((fold_dir / modality).relative_to(REPO_ROOT)),
         "train": "images/train",
         "val":   "images/val",
         "test":  "images/test",
@@ -68,6 +72,11 @@ def write_yaml(fold_dir: Path, modality: str) -> Path:
     with open(yaml_path, "w") as f:
         yaml.dump(cfg, f, default_flow_style=False, sort_keys=False)
     return yaml_path
+
+
+def clear_yolo_caches(mod_dir: Path) -> None:
+    for cache in (mod_dir / "labels").glob("*.cache"):
+        cache.unlink()
 
 
 def prepare_fold(fold_idx: int, test_chunk: str, train_chunks: list[str]) -> None:
@@ -120,6 +129,7 @@ def prepare_fold(fold_idx: int, test_chunk: str, train_chunks: list[str]) -> Non
 
             n_labeled[split] = labeled
 
+        clear_yolo_caches(fold_dir / modality)
         yaml_path = write_yaml(fold_dir, modality)
 
         print(f"  {modality}:")

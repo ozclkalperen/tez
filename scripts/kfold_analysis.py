@@ -16,13 +16,14 @@ Girdi : results/kfold_results.csv  (run_kfold.py'nin ürettiği)
 
 import csv
 from datetime import datetime
-from pathlib import Path
 from statistics import mean, stdev
 
+from paths import NOTES_DIR, REPO_ROOT, RESULTS_DIR
+
 # ── Config ─────────────────────────────────────────────────────────────────
-RESULTS_CSV = Path("/home/alp/thesis/results/kfold_results.csv")
-SUMMARY_CSV = Path("/home/alp/thesis/results/kfold_summary.csv")
-OUTPUT_MD   = Path("/home/alp/thesis/notes/kfold_analysis.md")
+RESULTS_CSV = RESULTS_DIR / "kfold_results.csv"
+SUMMARY_CSV = RESULTS_DIR / "kfold_summary.csv"
+OUTPUT_MD   = NOTES_DIR / "kfold_analysis.md"
 
 METRIC_KEYS = [
     ("test_map50",     "Test mAP50"),
@@ -200,7 +201,7 @@ def main() -> None:
     out: list[str] = []
     out.append("# SubPipe K-Fold Cross Validation Sonuçları")
     out.append(f"\n_Oluşturulma: {datetime.now():%Y-%m-%d %H:%M}_")
-    out.append(f"\nKaynak: `{RESULTS_CSV}`")
+    out.append(f"\nKaynak: `{RESULTS_CSV.relative_to(REPO_ROOT)}`")
     out.append(f"\n**Tamamlanan eğitim:** {n_total}  |  **Fold'lar:** {folds}  |  "
                f"**Modaliteler:** {mods}")
 

@@ -13,13 +13,14 @@ Her chunk için:
 """
 
 from datetime import datetime
-from pathlib import Path
 from PIL import Image
 import numpy as np
 
+from paths import NOTES_DIR, REPO_ROOT, get_subpipe_root
+
 # ── Config ─────────────────────────────────────────────────────────────────
-SUBPIPE_ROOT = Path("/home/alp/thesis/datasets/SubPipe")
-OUTPUT_MD    = Path("/home/alp/thesis/notes/dataset_analysis.md")
+SUBPIPE_ROOT = get_subpipe_root()
+OUTPUT_MD    = NOTES_DIR / "dataset_analysis.md"
 
 CHUNKS       = [f"Chunk{i}" for i in range(5)]
 MODALITIES   = ["LF", "HF"]
@@ -88,11 +89,15 @@ def fmt(val, spec=".3f") -> str:
 
 def build_report() -> str:
     data = {m: {c: analyze_chunk(c, m) for c in CHUNKS} for m in MODALITIES}
+    try:
+        source_path = SUBPIPE_ROOT.relative_to(REPO_ROOT)
+    except ValueError:
+        source_path = SUBPIPE_ROOT
 
     lines: list[str] = []
     lines.append("# SubPipe Dataset Analizi")
     lines.append(f"\n_Oluşturulma: {datetime.now():%Y-%m-%d %H:%M}_")
-    lines.append(f"\nKaynak: `{SUBPIPE_ROOT}`")
+    lines.append(f"\nKaynak: `{source_path}`")
 
     for mod in MODALITIES:
         full_name = "Düşük Frekans (455 kHz)" if mod == "LF" else "Yüksek Frekans (900 kHz)"

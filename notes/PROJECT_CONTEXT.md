@@ -23,7 +23,7 @@ daha iyi generalize edebilir mi?"
 - Anotasyonlar zaten YOLO formatında verili
 - Toplam: ~5000 görüntü/frekans, ~3100 anotasyon/frekans
 
-### Konum: `/home/alp/thesis/datasets/SubPipe/`
+### Konum: `datasets/SubPipe/` veya `datasets/subpipe/`
 Her chunk klasörü içinde `SSS_LF_images/` ve `SSS_HF_images/` var.
 
 ### Chunk Karakteristikleri (analiz tamamlandı)
@@ -64,7 +64,7 @@ iyileşme sağlıyor.
 - **Toplam eğitim:** 5 fold × 2 modalite (LF, HF) = 10 eğitim, ~1.5 saat
 
 ### Klasör yapısı
-/home/alp/thesis/
+repo kökü
 ├── datasets/
 │   ├── SubPipe/                    # Orijinal kaynak — DOKUNMA
 │   └── subpipe_kfold/              # K-fold için hazırlanacak

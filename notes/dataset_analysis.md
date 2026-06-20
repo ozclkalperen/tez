@@ -2,7 +2,7 @@
 
 _Generated: 2026-04-25 19:38_
 
-Source: `/home/alp/thesis/datasets/SubPipe`
+Source: `datasets/SubPipe`
 
 ## LF (Side-Scan Sonar – Low Frequency)
 

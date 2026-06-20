@@ -18,10 +18,12 @@ from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
+from paths import KFOLD_DIR, NOTES_DIR, REPO_ROOT, get_subpipe_root
+
 # ── Config ─────────────────────────────────────────────────────────────────
-SUBPIPE_ROOT = Path("/home/alp/thesis/datasets/SubPipe")
-KFOLD_ROOT   = Path("/home/alp/thesis/datasets/subpipe_kfold")
-OUTPUT_MD    = Path("/home/alp/thesis/notes/kfold_verification.md")
+SUBPIPE_ROOT = get_subpipe_root()
+KFOLD_ROOT   = KFOLD_DIR
+OUTPUT_MD    = NOTES_DIR / "kfold_verification.md"
 
 CHUNKS       = [f"Chunk{i}" for i in range(5)]
 MODALITIES   = ["LF", "HF"]
@@ -173,7 +175,7 @@ def format_report(results: list[dict]) -> str:
     lines = []
     lines.append("# K-Fold Hazırlık Doğrulama Raporu")
     lines.append(f"\n_Oluşturulma: {datetime.now():%Y-%m-%d %H:%M}_")
-    lines.append(f"\nKaynak: `{KFOLD_ROOT}`")
+    lines.append(f"\nKaynak: `{KFOLD_ROOT.relative_to(REPO_ROOT)}`")
 
     # ── Genel özet ────────────────────────────────────────────────────────
     total_errors   = sum(len(r["errors"]) for r in results)

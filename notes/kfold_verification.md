@@ -2,7 +2,7 @@
 
 _Oluşturulma: 2026-04-25 20:50_
 
-Kaynak: `/home/alp/thesis/datasets/subpipe_kfold`
+Kaynak: `datasets/subpipe_kfold`
 
 ## Genel Durum
 

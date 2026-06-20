@@ -1,8 +1,8 @@
 # SubPipe K-Fold Cross Validation Sonuçları
 
-_Oluşturulma: 2026-04-26 00:23_
+_Oluşturulma: 2026-06-20 02:19_
 
-Kaynak: `/home/alp/thesis/results/kfold_results.csv`
+Kaynak: `results/kfold_results.csv`
 
 **Tamamlanan eğitim:** 10  |  **Fold'lar:** [0, 1, 2, 3, 4]  |  **Modaliteler:** ['HF', 'LF']
 

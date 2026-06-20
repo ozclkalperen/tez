@@ -1,4 +1,4 @@
-path: /home/alp/thesis/datasets/subpipe_kfold/fold_4/LF
+path: datasets/subpipe_kfold/fold_4/LF
 train: images/train
 val: images/val
 test: images/test

@@ -6,10 +6,11 @@ Her .pbm dosyasının yanına aynı isimde .png yazılır. Mevcut .png varsa atl
 Tek seferlik, dataset hazırlığından önce çalıştırılır.
 """
 
-from pathlib import Path
 from PIL import Image
 
-BASE_DIR = Path("/home/alp/thesis/datasets/SubPipe")
+from paths import get_subpipe_root
+
+BASE_DIR = get_subpipe_root(require_full=False)
 
 
 def main() -> None:
