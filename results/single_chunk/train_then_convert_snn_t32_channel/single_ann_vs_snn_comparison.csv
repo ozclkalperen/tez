@@ -1,0 +1,5 @@
+dataset,fold,modality,split,snn_label,ann_scope,snn_scope,snn_threshold,snn_timesteps,snn_replaced,snn_calibration,ann_map50,snn_map50,delta_map50,ann_map50_95,snn_map50_95,delta_map50_95,map50_95_retention
+single,,LF,val,YOLOv26n-SNN train-then-convert channel-wise,none,range5-10+range13-13+range17-22,0.4,32,49,channel:p99,0.931006,0.891201,-0.039805,0.668664,0.606519,-0.062145,0.907061
+single,,LF,test,YOLOv26n-SNN train-then-convert channel-wise,none,range5-10+range13-13+range17-22,0.4,32,49,channel:p99,0.955944,0.877588,-0.078356,0.738888,0.650313,-0.088575,0.880124
+single,,HF,val,YOLOv26n-SNN train-then-convert channel-wise,none,range5-10+range13-13+range17-22,0.4,32,49,channel:p99,0.926253,0.93676,0.010507,0.547913,0.54104,-0.006873,0.987456
+single,,HF,test,YOLOv26n-SNN train-then-convert channel-wise,none,range5-10+range13-13+range17-22,0.4,32,49,channel:p99,0.869386,0.868458,-0.000928,0.531649,0.510377,-0.021272,0.959989

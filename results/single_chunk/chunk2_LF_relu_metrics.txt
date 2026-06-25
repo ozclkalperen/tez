@@ -1,0 +1,14 @@
+modality=LF
+activation=relu
+replaced_activations=105
+init_pt=/home/alperen/tez/runs/single_chunk/init/yolo26n_relu.pt
+run_dir=/home/alperen/tez/runs/single_chunk/chunk2_LF_relu
+best_pt=/home/alperen/tez/runs/single_chunk/chunk2_LF_relu/weights/best.pt
+val_precision=0.9348
+val_recall=0.9054
+val_map50=0.9310
+val_map50_95=0.6687
+test_precision=0.8952
+test_recall=0.9491
+test_map50=0.9559
+test_map50_95=0.7389

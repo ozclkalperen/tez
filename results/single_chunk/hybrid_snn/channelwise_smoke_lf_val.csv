@@ -1,0 +1,2 @@
+scope,threshold,source_activation,timesteps,replaced,spike_scale,calibration_stat,calibration_granularity,threshold_mean,threshold_min,threshold_max,split,precision,recall,map50,map50_95
+range5-10+range13-13+range17-22,0.6,ReLU,16,49,threshold,p99,channel,0.683148,1e-06,11.786114,val,0.93372,0.761533,0.889812,0.603543

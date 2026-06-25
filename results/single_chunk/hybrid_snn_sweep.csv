@@ -1,0 +1,6 @@
+scope,threshold,timesteps,replaced,split,precision,recall,map50,map50_95
+none,1.0,1,0,test,0.533425,0.524041,0.600027,0.308149
+until0,0.1,2,1,test,0.0,0.0,0.0,0.0
+until0,0.5,2,1,test,0.000157,0.041667,9e-06,1e-06
+all,0.1,2,105,test,0.0,0.0,0.0,0.0
+all,0.5,2,105,test,0.0,0.0,0.0,0.0

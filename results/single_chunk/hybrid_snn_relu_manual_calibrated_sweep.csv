@@ -1,0 +1,8 @@
+scope,threshold,source_activation,timesteps,replaced,spike_scale,calibration_stat,threshold_mean,threshold_min,threshold_max,split,precision,recall,map50,map50_95
+none,1.0,ReLU,1,0,threshold,p99,1.0,1.0,1.0,test,0.895191,0.949061,0.955944,0.738888
+until0,0.25,ReLU,8,1,threshold,p99,4.341573,4.341573,4.341573,test,0.265537,0.652778,0.609908,0.338646
+until0,0.5,ReLU,8,1,threshold,p99,8.683146,8.683146,8.683146,test,0.743837,0.472222,0.534908,0.367498
+until0,1.0,ReLU,8,1,threshold,p99,17.366293,17.366293,17.366293,test,0.01378,0.097222,0.001333,0.000209
+head,0.25,ReLU,8,36,threshold,p99,0.919629,0.419988,2.399963,test,0.0,0.0,0.0,0.0
+head,0.5,ReLU,8,36,threshold,p99,1.839258,0.839975,4.799926,test,0.0,0.0,0.0,0.0
+head,1.0,ReLU,8,36,threshold,p99,3.678517,1.679951,9.599853,test,0.0,0.0,0.0,0.0

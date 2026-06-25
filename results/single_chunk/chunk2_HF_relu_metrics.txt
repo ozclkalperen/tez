@@ -1,0 +1,14 @@
+modality=HF
+activation=relu
+replaced_activations=105
+init_pt=/home/alperen/tez/runs/single_chunk/init/yolo26n_relu.pt
+run_dir=/home/alperen/tez/runs/single_chunk/chunk2_HF_relu
+best_pt=/home/alperen/tez/runs/single_chunk/chunk2_HF_relu/weights/best.pt
+val_precision=0.8882
+val_recall=0.7857
+val_map50=0.9263
+val_map50_95=0.5479
+test_precision=0.8787
+test_recall=0.7778
+test_map50=0.8694
+test_map50_95=0.5316

@@ -1,0 +1,7 @@
+torch
+ultralytics
+spikingjelly
+opencv-python<4.12
+Pillow
+PyYAML
+numpy<2

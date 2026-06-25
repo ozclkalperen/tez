@@ -1,0 +1,5 @@
+scope,threshold,source_activation,timesteps,replaced,spike_scale,calibration_stat,threshold_mean,threshold_min,threshold_max,split,precision,recall,map50,map50_95
+none,1.0,ReLU,1,0,threshold,p99,1.0,1.0,1.0,test,0.895191,0.949061,0.955944,0.738888
+until0,0.5,ReLU,8,1,threshold,p99,4.379710464067979e+26,4.379710464067979e+26,4.379710464067979e+26,test,0.0,0.0,0.0,0.0
+until0,1.0,ReLU,8,1,threshold,p99,8.759420928135959e+26,8.759420928135959e+26,8.759420928135959e+26,test,0.0,0.0,0.0,0.0
+until0,2.0,ReLU,8,1,threshold,p99,1.7518841856271917e+27,1.7518841856271917e+27,1.7518841856271917e+27,test,0.0,0.0,0.0,0.0

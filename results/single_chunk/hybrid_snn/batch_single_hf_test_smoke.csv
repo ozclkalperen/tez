@@ -1,0 +1,3 @@
+dataset,fold,modality,tag,data_yaml,checkpoint,scope,threshold,source_activation,timesteps,replaced,spike_scale,calibration_stat,threshold_mean,threshold_min,threshold_max,split,precision,recall,map50,map50_95
+single,,HF,chunk2,/home/alperen/tez/datasets/subpipe_single_chunk/HF/data.yaml,/home/alperen/tez/runs/single_chunk/chunk2_HF_relu/weights/best.pt,none,1.0,ReLU,1,0,threshold,p99,1.0,1.0,1.0,test,0.878679,0.777778,0.869386,0.531649
+single,,HF,chunk2,/home/alperen/tez/datasets/subpipe_single_chunk/HF/data.yaml,/home/alperen/tez/runs/single_chunk/chunk2_HF_relu/weights/best.pt,range5-10+range13-13+range17-22,0.6,ReLU,16,49,threshold,p99,4.821196,0.857152,20.578242,test,0.875028,0.809524,0.854306,0.520085

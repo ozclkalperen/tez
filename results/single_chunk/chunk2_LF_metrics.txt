@@ -1,0 +1,11 @@
+modality=LF
+run_dir=/home/alperen/tez/runs/single_chunk/chunk2_LF
+best_pt=/home/alperen/tez/runs/single_chunk/chunk2_LF/weights/best.pt
+val_precision=0.5627
+val_recall=0.5405
+val_map50=0.5644
+val_map50_95=0.2767
+test_precision=0.5334
+test_recall=0.5240
+test_map50=0.6000
+test_map50_95=0.3081

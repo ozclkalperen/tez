@@ -6,7 +6,8 @@ akışını içerir.
 
 ## Dataset Yerleşimi
 
-Orijinal SubPipe klasörünü repo içinde aşağıdaki konumlardan birine koyun:
+Orijinal SubPipe klasörü git'e eklenmez. Her makinede lokal olarak aşağıdaki
+konumlardan birine koyun:
 
 ```text
 datasets/SubPipe/
@@ -80,3 +81,53 @@ pip install -r requirements-snn.txt
 
 `snn_probe.py`, YOLO checkpoint'ini SpikingJelly ANN-to-SNN dönüşümü açısından
 yoklar. Doğrudan conversion denemek için `--convert` eklenebilir.
+
+## Taşınabilir Repo Düzeni
+
+Bu repo başka bir PC'ye taşınırken yalnızca kod, requirements, notlar ve küçük
+sonuç CSV/raporları pushlanmalıdır. Aşağıdakiler lokal veya yeniden üretilebilir
+çıktı kabul edilir ve `.gitignore` ile dışarıda tutulur:
+
+- `datasets/SubPipe/`: ham SubPipe dataset kopyası
+- `datasets/subpipe_kfold/`: `prepare_kfold.py` ile yeniden üretilen YOLO fold datasetleri
+- `datasets/subpipe_single_chunk/`: `prepare_single_chunk.py` ile yeniden üretilen küçük dataset
+- `runs/`: eğitim klasörleri, checkpointler ve validasyon çıktıları
+- `*.pt`, `*.onnx`, `*.engine`: model ağırlıkları ve export dosyaları
+
+Yeni bir makinede devam etmek için:
+
+```bash
+git clone <repo-url>
+cd tez
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements-snn.txt
+```
+
+Dataset repo dışındaysa:
+
+```bash
+export SUBPIPE_ROOT=/path/to/SubPipe
+```
+
+Sonra mevcut veri durumuna göre:
+
+```bash
+python3 scripts/convert_pbm_to_png.py
+python3 scripts/prepare_kfold.py
+```
+
+veya tek chunk pilot çalışma için:
+
+```bash
+python3 scripts/convert_pbm_to_png.py
+python3 scripts/prepare_single_chunk.py
+```
+
+Not: Mevcut git geçmişinde daha önce dataset dosyaları izlenmişse `.gitignore`
+tek başına geçmişi küçültmez. Push öncesi ya temiz bir repo kopyası açmak ya da
+git geçmişinden dataset dosyalarını ayrıca temizlemek gerekir.
+
+Yeni PC'de Codex ile konuşmaya devam etmek için önce
+`notes/codex_handoff.md` ve `notes/snn_probe.md` dosyalarını okutun. İlki kısa
+bağlam özeti, ikincisi ayrıntılı deney günlüğüdür.
